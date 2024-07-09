@@ -48,3 +48,5 @@ Contributions are welcome! Fork the repository and submit a pull request with yo
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+<img src="https://komarev.com/ghpvc/?username=comments-remover&label=Comments-Remover&color=0e75b6&style=flat" alt="since 9th July,2024" />
