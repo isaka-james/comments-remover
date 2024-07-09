@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Function to uninstall the tools
+uninstall_tools() {
+    # Remove remove-comment executable
+    sudo rm -f /usr/local/bin/remove-comment
+    
+    # Remove remove-comments script
+    sudo rm -f /usr/local/bin/remove-comments
+    
+    echo "Tools removed successfully!"
+}
+
+# Check if uninstall flag is provided
+if [ "$1" == "-uninstall" ]; then
+    uninstall_tools
+    exit 0
+fi
+
+# List of file extensions to process
+extensions=( js cpp java rs c go ts lua dart kt nr rb php )
+
+# Determine directory to search
+if [ -z "$1" ]; then
+    directory="."
+else
+    directory="$1"
+fi
+
+# Iterate over each extension
+for ext in "${extensions[@]}"; do
+    # Find all files with current extension in specified directory and subdirectories
+    find "$directory" -type f -name "*.${ext}" | while read -r file; do
+        # Run remove-comment script with -o option for each file
+        remove-comment -o "${file}"
+    done
+done
